@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PANEL IOS Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container" id="page1">
+    <div class="logo">PANEL IOS</div>
+    <div class="sub-logo">@SangNguyen⚡️</div>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button id="loginBtn">Login</button>
+    <div id="loginStatus" class="status-text"></div>
+  </div>
+
+  <div class="container hidden" id="page2">
+    <a href="#" class="back-btn" onclick="goBack()">← Back</a>
+    <div class="logo">PANEL IOS</div>
+    <div class="sub-logo">@SangNguyen⚡️</div>
+
+    <div class="toggle-container">
+      <span>REGEDIT V1</span>
+      <label class="switch">
+        <input type="checkbox" onchange="handleToggle(this)">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="toggle-container">
+      <span>REGEDIT V2</span>
+      <label class="switch">
+        <input type="checkbox" onchange="handleToggle(this)">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="toggle-container">
+      <span>AimLock 50%</span>
+      <label class="switch">
+        <input type="checkbox" onchange="handleToggle(this)">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="toggle-container">
+      <span>Macro Boot V1</span>
+      <label class="switch">
+        <input type="checkbox" onchange="handleToggle(this)">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="toggle-container">
+      <span>SENSITIVITY Y</span>
+      <label class="switch">
+        <input type="checkbox" onchange="handleToggle(this)">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="toggle-container">
+      <span>Sniper Scope</span>
+      <label class="switch">
+        <input type="checkbox" onchange="handleToggle(this)">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <button id="ffButton">FFTH X FFMAX</button>
+
+    <div id="status" class="status-text"></div>
+  </div>
+
+  <script>
+    const loginBtn = document.getElementById('loginBtn');
+    const loginStatus = document.getElementById('loginStatus');
+    const page1 = document.getElementById('page1');
+    const page2 = document.getElementById('page2');
+
+    loginBtn.addEventListener('click', () => {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      if (username === "Sangdz" && password === "1809") {
+        loginStatus.innerText = "Loading...";
+        setTimeout(() => {
+          page1.classList.add('hidden');
+          page2.classList.remove('hidden');
+        }, 2000);
+      } else {
+        document.getElementById('password').value = "";
+        document.getElementById('password').placeholder = "Sai pass hoặc user";
+      }
+    });
+
+    function goBack() {
+      page2.classList.add('hidden');
+      page1.classList.remove('hidden');
+      loginStatus.innerText = "";
+    }
+
+    function handleToggle(toggle) {
+      const status = document.getElementById('status');
+      status.innerText = "Loading...";
+      const isChecked = toggle.checked;
+      const delay = isChecked ? 2000 : 1000;
+      setTimeout(() => {
+        status.innerText = isChecked ? "On..." : "Off";
+      }, delay);
+    }
+
+    // Nút FFTH X FFMAX không chuyển trang
+    document.getElementById('ffButton').addEventListener('click', () => {
+      // Không làm gì cả
+    });
+  </script>
+
+</body>
+</html>
